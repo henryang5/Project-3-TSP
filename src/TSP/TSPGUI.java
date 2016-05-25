@@ -14,7 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TSPGUI extends javax.swing.JFrame 
 {
     
-    private ArrayList<Vertex> verticies = new ArrayList<Vertex>();
+    private ArrayList<Cities> verticies = new ArrayList<Cities>();
     private String[] vertex; 
     private int[][] edges; 
 
@@ -54,7 +54,7 @@ public class TSPGUI extends javax.swing.JFrame
             String line = input.readLine();     // Read first line of file 
             while(line != null)
             {
-                Vertex newVertex = new Vertex();
+                Cities newVertex = new Cities();
                 // Use the stringtokenizer class to seperate fields in the line 
                 StringTokenizer token = new StringTokenizer(line, " "); 
                 while(token.hasMoreTokens())
