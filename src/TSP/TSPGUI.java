@@ -116,17 +116,188 @@ public class TSPGUI extends javax.swing.JFrame
     private void initComponents()
     {
 
+        outputJPanel = new javax.swing.JPanel();
+        outputJScrollPane = new javax.swing.JScrollPane();
+        outputJTextArea = new javax.swing.JTextArea();
+        methodJPanel = new javax.swing.JPanel();
+        nearestNeighborJButton = new javax.swing.JButton();
+        sortedEdgesJButton = new javax.swing.JButton();
+        heldKarpJButton = new javax.swing.JButton();
+        statisticsJPanel = new javax.swing.JPanel();
+        actionJPanel = new javax.swing.JPanel();
+        clearJButton = new javax.swing.JButton();
+        printJButton = new javax.swing.JButton();
+        saveJButton = new javax.swing.JButton();
+        exitJButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        TSPJMenuBar = new javax.swing.JMenuBar();
+        fileJMenu = new javax.swing.JMenu();
+        openJMenuItem = new javax.swing.JMenuItem();
+        clearJMenuItem = new javax.swing.JMenuItem();
+        saveJMenuItem = new javax.swing.JMenuItem();
+        fileJSeparator = new javax.swing.JPopupMenu.Separator();
+        printJMenuItem = new javax.swing.JMenuItem();
+        exitJMenuItem = new javax.swing.JMenuItem();
+        methodJMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        editJMenu = new javax.swing.JMenu();
+        helpJMenu = new javax.swing.JMenu();
+        aboutJMenuItem = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        outputJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Output"));
+
+        outputJTextArea.setColumns(20);
+        outputJTextArea.setRows(5);
+        outputJScrollPane.setViewportView(outputJTextArea);
+
+        javax.swing.GroupLayout outputJPanelLayout = new javax.swing.GroupLayout(outputJPanel);
+        outputJPanel.setLayout(outputJPanelLayout);
+        outputJPanelLayout.setHorizontalGroup(
+            outputJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, outputJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(outputJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        outputJPanelLayout.setVerticalGroup(
+            outputJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, outputJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(outputJScrollPane)
+                .addContainerGap())
+        );
+
+        methodJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Method"));
+        methodJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        nearestNeighborJButton.setText("Nearest Neighbor");
+        methodJPanel.add(nearestNeighborJButton);
+
+        sortedEdgesJButton.setText("Sorted Edges");
+        methodJPanel.add(sortedEdgesJButton);
+
+        heldKarpJButton.setText("Held Karp");
+        methodJPanel.add(heldKarpJButton);
+
+        statisticsJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Statistics"));
+
+        javax.swing.GroupLayout statisticsJPanelLayout = new javax.swing.GroupLayout(statisticsJPanel);
+        statisticsJPanel.setLayout(statisticsJPanelLayout);
+        statisticsJPanelLayout.setHorizontalGroup(
+            statisticsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        statisticsJPanelLayout.setVerticalGroup(
+            statisticsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 67, Short.MAX_VALUE)
+        );
+
+        actionJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Action"));
+        actionJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
+
+        clearJButton.setText("Clear");
+        actionJPanel.add(clearJButton);
+
+        printJButton.setText("Print");
+        actionJPanel.add(printJButton);
+
+        saveJButton.setText("Save");
+        actionJPanel.add(saveJButton);
+
+        exitJButton.setText("Exit");
+        actionJPanel.add(exitJButton);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        fileJMenu.setText("File");
+
+        openJMenuItem.setText("Open");
+        fileJMenu.add(openJMenuItem);
+
+        clearJMenuItem.setText("Clear");
+        fileJMenu.add(clearJMenuItem);
+
+        saveJMenuItem.setText("Save");
+        fileJMenu.add(saveJMenuItem);
+        fileJMenu.add(fileJSeparator);
+
+        printJMenuItem.setText("Print");
+        fileJMenu.add(printJMenuItem);
+
+        exitJMenuItem.setText("Exit");
+        fileJMenu.add(exitJMenuItem);
+
+        TSPJMenuBar.add(fileJMenu);
+
+        methodJMenu.setText("Method");
+
+        jMenuItem1.setText("Nearest Neighbor");
+        methodJMenu.add(jMenuItem1);
+
+        jMenuItem2.setText("Sorted Edges");
+        methodJMenu.add(jMenuItem2);
+
+        jMenuItem3.setText("Held Karp");
+        methodJMenu.add(jMenuItem3);
+
+        TSPJMenuBar.add(methodJMenu);
+
+        editJMenu.setText("Edit");
+        TSPJMenuBar.add(editJMenu);
+
+        helpJMenu.setText("Help");
+
+        aboutJMenuItem.setText("About");
+        helpJMenu.add(aboutJMenuItem);
+
+        TSPJMenuBar.add(helpJMenu);
+
+        setJMenuBar(TSPJMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(methodJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(actionJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outputJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(methodJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(actionJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outputJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -177,5 +348,34 @@ public class TSPGUI extends javax.swing.JFrame
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar TSPJMenuBar;
+    private javax.swing.JMenuItem aboutJMenuItem;
+    private javax.swing.JPanel actionJPanel;
+    private javax.swing.JButton clearJButton;
+    private javax.swing.JMenuItem clearJMenuItem;
+    private javax.swing.JMenu editJMenu;
+    private javax.swing.JButton exitJButton;
+    private javax.swing.JMenuItem exitJMenuItem;
+    private javax.swing.JMenu fileJMenu;
+    private javax.swing.JPopupMenu.Separator fileJSeparator;
+    private javax.swing.JButton heldKarpJButton;
+    private javax.swing.JMenu helpJMenu;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu methodJMenu;
+    private javax.swing.JPanel methodJPanel;
+    private javax.swing.JButton nearestNeighborJButton;
+    private javax.swing.JMenuItem openJMenuItem;
+    private javax.swing.JPanel outputJPanel;
+    private javax.swing.JScrollPane outputJScrollPane;
+    private javax.swing.JTextArea outputJTextArea;
+    private javax.swing.JButton printJButton;
+    private javax.swing.JMenuItem printJMenuItem;
+    private javax.swing.JButton saveJButton;
+    private javax.swing.JMenuItem saveJMenuItem;
+    private javax.swing.JButton sortedEdgesJButton;
+    private javax.swing.JPanel statisticsJPanel;
     // End of variables declaration//GEN-END:variables
 }
