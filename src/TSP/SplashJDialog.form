@@ -55,14 +55,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="splashJProgressBar" max="32767" attributes="0"/>
                       <Component id="titleJLabel" max="32767" attributes="0"/>
-                      <Component id="splashJProgressBar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="splashJLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="splashJLabel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,7 +98,7 @@
         <Component class="javax.swing.JLabel" name="splashJLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Data/DanceSplash.png"/>
+              <Image iconType="3" name="/Data/TSPSplash.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

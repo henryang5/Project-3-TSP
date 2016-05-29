@@ -25,7 +25,7 @@ public class SplashJDialog extends javax.swing.JDialog
         this.setIconImage(Toolkit.getDefaultToolkit().
                 getImage("src/data/CardsIcon.png"));
         splashJProgressBar.setStringPainted(true);
-        ImageIcon splashGif = new ImageIcon("src/data/DanceSplash.png");
+        ImageIcon splashGif = new ImageIcon("src/data/TSPSplash.png");
         splashJLabel.setIcon(splashGif);
         
 //        for (int i=0; i<=100; i++){
@@ -100,7 +100,7 @@ public class SplashJDialog extends javax.swing.JDialog
         titleJLabel.setText("Traveling Salesman Problem ");
         titleJLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        splashJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/DanceSplash.png"))); // NOI18N
+        splashJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/TSPSplash.png"))); // NOI18N
         splashJLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         splashJProgressBar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,13 +113,13 @@ public class SplashJDialog extends javax.swing.JDialog
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(splashJProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(titleJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(splashJProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(splashJLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(splashJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
