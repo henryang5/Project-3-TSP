@@ -11,7 +11,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="openJMenuItem">
               <Properties>
+                <Property name="mnemonic" type="int" value="79"/>
                 <Property name="text" type="java.lang.String" value="Open"/>
+                <Property name="toolTipText" type="java.lang.String" value="Open a file containing cities."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openJMenuItemActionPerformed"/>
@@ -20,23 +22,42 @@
             <MenuItem class="javax.swing.JMenuItem" name="clearJMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear"/>
+                <Property name="toolTipText" type="java.lang.String" value="Clear the form."/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="saveJMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
+                <Property name="toolTipText" type="java.lang.String" value="Save the displayed data."/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="fileJSeparator">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="printJMenuItem">
+            <Menu class="javax.swing.JMenu" name="printJMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Print"/>
               </Properties>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="printFormJMenuItem">
+                  <Properties>
+                    <Property name="mnemonic" type="int" value="80"/>
+                    <Property name="text" type="java.lang.String" value="Print Form"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Print the form."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="printDataJMenuItem">
+                  <Properties>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Print Data"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Print the outputed data."/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="exitJMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Exit"/>
+                <Property name="toolTipText" type="java.lang.String" value="Exit the program."/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -49,34 +70,37 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nearest Neighbor"/>
+                <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sorted Edges"/>
+                <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Held Karp"/>
+                <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="editJMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="helpJMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Help"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aboutJMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="About"/>
+                <Property name="toolTipText" type="java.lang.String" value="Display the about form."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aboutJMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -115,7 +139,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="statisticsJPanel" max="32767" attributes="0"/>
+                  <Component id="statisticsJPanel" pref="305" max="32767" attributes="0"/>
                   <Component id="outputJPanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -164,7 +188,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="outputJScrollPane" pref="269" max="32767" attributes="0"/>
+                  <Component id="outputJScrollPane" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -189,8 +213,14 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="outputJTextArea">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Courier New" size="11" style="0"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="  &#xa;&#xa;&#xa;&#xa;&#xa;  Welcome to the Traveling Salesman&#xa; &#x9;       Program."/>
+                <Property name="toolTipText" type="java.lang.String" value="Shows the calculated data."/>
               </Properties>
             </Component>
           </SubComponents>
@@ -219,17 +249,23 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="nearestNeighborJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="78"/>
             <Property name="text" type="java.lang.String" value="Nearest Neighbor"/>
+            <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="sortedEdgesJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="69"/>
             <Property name="text" type="java.lang.String" value="Sorted Edges"/>
+            <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="heldKarpJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="75"/>
             <Property name="text" type="java.lang.String" value="Held Karp"/>
+            <Property name="toolTipText" type="java.lang.String" value="A method to find the shortest path."/>
           </Properties>
         </Component>
       </SubComponents>
@@ -251,7 +287,8 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="numberOfCitiesJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="# of Cities:  "/>
+            <Property name="text" type="java.lang.String" value="# of Cities:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -261,6 +298,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="citiesVisitedJTextField">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[30, 22]"/>
             </Property>
@@ -276,7 +314,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="citiesVisitedJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cities Visited:  "/>
+            <Property name="text" type="java.lang.String" value="Cities Visited:   "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -286,6 +324,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="numberOfCitiesJTextField">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[30, 22]"/>
             </Property>
@@ -296,6 +335,45 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nanosecondsJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" NanoSeconds:   "/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nanosecondsJTextField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[30, 22]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[40, 22]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="methodJTextField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[130, 22]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="2" gridY="1" gridWidth="2" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="8" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -323,22 +401,29 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="clearJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="Clear"/>
+            <Property name="toolTipText" type="java.lang.String" value="Clear the form."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="printJButton">
+        <Component class="javax.swing.JButton" name="printFormJButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Print"/>
+            <Property name="text" type="java.lang.String" value="Print Form"/>
+            <Property name="toolTipText" type="java.lang.String" value="Print the form."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="saveJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="83"/>
             <Property name="text" type="java.lang.String" value="Save"/>
+            <Property name="toolTipText" type="java.lang.String" value="Save the displayed data."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="exitJButton">
           <Properties>
+            <Property name="mnemonic" type="int" value="120"/>
             <Property name="text" type="java.lang.String" value="Exit"/>
+            <Property name="toolTipText" type="java.lang.String" value="Exit the program."/>
           </Properties>
         </Component>
       </SubComponents>

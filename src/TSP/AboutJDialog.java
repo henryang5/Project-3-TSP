@@ -50,7 +50,8 @@ public class AboutJDialog extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         aboutJScrollPane = new javax.swing.JScrollPane();
@@ -66,6 +67,7 @@ public class AboutJDialog extends javax.swing.JDialog
         contactJLabel = new javax.swing.JLabel();
         copyrightQueryJLabel = new javax.swing.JLabel();
         copyrightJLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         titleJSeparator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -78,24 +80,26 @@ public class AboutJDialog extends javax.swing.JDialog
         aboutJTextArea.setColumns(20);
         aboutJTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         aboutJTextArea.setRows(5);
-        aboutJTextArea.setText("Welcome the the Cafe Dancers Database!\nThis program was created in order to properly organize and retain \ninformation on dancers!\nThis program has the capabilities to:\n• Print     • Clear    • Save    • Add Player\n• Edit Player   • Delete Player   • Display Statistics");
+        aboutJTextArea.setText("Welcome to the Traveling Salesman Program! \nThis program was made in order to find the shortest possible route between\ncities. This program uses loaded city files to determine the shortest path.\nThis program has the capabilities to use the following:\n• Print     • Clear    • Save    • Load\n• Nearest Neighbor   • Sorted Edges   • Held Karp");
         aboutJScrollPane.setViewportView(aboutJTextArea);
 
         closeJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         closeJButton.setText("Close");
         closeJButton.setToolTipText("Close the window");
-        closeJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        closeJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 closeJButtonActionPerformed(evt);
             }
         });
 
         titleJLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        titleJLabel.setText("Cafe Dansa Database");
+        titleJLabel.setText("Traveling Salesman Program About");
 
         infoJPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         java.awt.GridBagLayout infoJPanelLayout = new java.awt.GridBagLayout();
-        infoJPanelLayout.columnWidths = new int[] {0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0};
+        infoJPanelLayout.columnWidths = new int[] {0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0};
         infoJPanelLayout.rowHeights = new int[] {0, 6, 0, 6, 0};
         infoJPanelLayout.columnWeights = new double[] {0.5};
         infoJPanelLayout.rowWeights = new double[] {5.0};
@@ -120,16 +124,16 @@ public class AboutJDialog extends javax.swing.JDialog
         vendorQueryJLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         vendorQueryJLabel.setText("Vendor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         infoJPanel.add(vendorQueryJLabel, gridBagConstraints);
 
         vendorJLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         vendorJLabel.setText("Roman Barlet");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         infoJPanel.add(vendorJLabel, gridBagConstraints);
 
@@ -152,7 +156,7 @@ public class AboutJDialog extends javax.swing.JDialog
         copyrightQueryJLabel.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         copyrightQueryJLabel.setText("CopyRight:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         infoJPanel.add(copyrightQueryJLabel, gridBagConstraints);
@@ -160,10 +164,18 @@ public class AboutJDialog extends javax.swing.JDialog
         copyrightJLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         copyrightJLabel.setText("Free");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         infoJPanel.add(copyrightJLabel, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setText("Henry Ang");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 15);
+        infoJPanel.add(jLabel1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,7 +190,7 @@ public class AboutJDialog extends javax.swing.JDialog
                         .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleJSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titleJSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(titleJLabel)
                             .addComponent(infoJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -186,8 +198,8 @@ public class AboutJDialog extends javax.swing.JDialog
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titleJLabel)
                 .addGap(5, 5, 5)
                 .addComponent(titleJSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -195,11 +207,9 @@ public class AboutJDialog extends javax.swing.JDialog
                 .addComponent(infoJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -252,6 +262,26 @@ public class AboutJDialog extends javax.swing.JDialog
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                AboutJDialog dialog = new AboutJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter()
+                {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e)
+                    {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,6 +293,7 @@ public class AboutJDialog extends javax.swing.JDialog
     private javax.swing.JLabel copyrightJLabel;
     private javax.swing.JLabel copyrightQueryJLabel;
     private javax.swing.JPanel infoJPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel titleJLabel;
     private javax.swing.JSeparator titleJSeparator;
     private javax.swing.JLabel vendorJLabel;

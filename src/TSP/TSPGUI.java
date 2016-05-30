@@ -128,9 +128,12 @@ public class TSPGUI extends javax.swing.JFrame
         citiesVisitedJTextField = new javax.swing.JTextField();
         citiesVisitedJLabel = new javax.swing.JLabel();
         numberOfCitiesJTextField = new javax.swing.JTextField();
+        nanosecondsJLabel = new javax.swing.JLabel();
+        nanosecondsJTextField = new javax.swing.JTextField();
+        methodJTextField = new javax.swing.JTextField();
         actionJPanel = new javax.swing.JPanel();
         clearJButton = new javax.swing.JButton();
-        printJButton = new javax.swing.JButton();
+        printFormJButton = new javax.swing.JButton();
         saveJButton = new javax.swing.JButton();
         exitJButton = new javax.swing.JButton();
         imageJPanel = new javax.swing.JPanel();
@@ -141,13 +144,14 @@ public class TSPGUI extends javax.swing.JFrame
         clearJMenuItem = new javax.swing.JMenuItem();
         saveJMenuItem = new javax.swing.JMenuItem();
         fileJSeparator = new javax.swing.JPopupMenu.Separator();
-        printJMenuItem = new javax.swing.JMenuItem();
+        printJMenu = new javax.swing.JMenu();
+        printFormJMenuItem = new javax.swing.JMenuItem();
+        printDataJMenuItem = new javax.swing.JMenuItem();
         exitJMenuItem = new javax.swing.JMenuItem();
         methodJMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        editJMenu = new javax.swing.JMenu();
         helpJMenu = new javax.swing.JMenu();
         aboutJMenuItem = new javax.swing.JMenuItem();
 
@@ -155,8 +159,12 @@ public class TSPGUI extends javax.swing.JFrame
 
         outputJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Output"));
 
+        outputJTextArea.setEditable(false);
         outputJTextArea.setColumns(20);
+        outputJTextArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         outputJTextArea.setRows(5);
+        outputJTextArea.setText("  \n\n\n\n\n  Welcome to the Traveling Salesman\n \t       Program.");
+        outputJTextArea.setToolTipText("Shows the calculated data.");
         outputJScrollPane.setViewportView(outputJTextArea);
 
         javax.swing.GroupLayout outputJPanelLayout = new javax.swing.GroupLayout(outputJPanel);
@@ -165,7 +173,7 @@ public class TSPGUI extends javax.swing.JFrame
             outputJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, outputJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(outputJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(outputJScrollPane)
                 .addContainerGap())
         );
         outputJPanelLayout.setVerticalGroup(
@@ -179,21 +187,29 @@ public class TSPGUI extends javax.swing.JFrame
         methodJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Method"));
         methodJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
 
+        nearestNeighborJButton.setMnemonic('N');
         nearestNeighborJButton.setText("Nearest Neighbor");
+        nearestNeighborJButton.setToolTipText("A method to find the shortest path.");
         methodJPanel.add(nearestNeighborJButton);
 
+        sortedEdgesJButton.setMnemonic('E');
         sortedEdgesJButton.setText("Sorted Edges");
+        sortedEdgesJButton.setToolTipText("A method to find the shortest path.");
         methodJPanel.add(sortedEdgesJButton);
 
+        heldKarpJButton.setMnemonic('K');
         heldKarpJButton.setText("Held Karp");
+        heldKarpJButton.setToolTipText("A method to find the shortest path.");
         methodJPanel.add(heldKarpJButton);
 
         statisticsJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Statistics"));
         statisticsJPanel.setLayout(new java.awt.GridBagLayout());
 
-        numberOfCitiesJLabel.setText("# of Cities:  ");
+        numberOfCitiesJLabel.setText("# of Cities:");
+        numberOfCitiesJLabel.setToolTipText("");
         statisticsJPanel.add(numberOfCitiesJLabel, new java.awt.GridBagConstraints());
 
+        citiesVisitedJTextField.setEditable(false);
         citiesVisitedJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
         citiesVisitedJTextField.setPreferredSize(new java.awt.Dimension(30, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -201,12 +217,13 @@ public class TSPGUI extends javax.swing.JFrame
         gridBagConstraints.gridy = 1;
         statisticsJPanel.add(citiesVisitedJTextField, gridBagConstraints);
 
-        citiesVisitedJLabel.setText("Cities Visited:  ");
+        citiesVisitedJLabel.setText("Cities Visited:   ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         statisticsJPanel.add(citiesVisitedJLabel, gridBagConstraints);
 
+        numberOfCitiesJTextField.setEditable(false);
         numberOfCitiesJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
         numberOfCitiesJTextField.setPreferredSize(new java.awt.Dimension(30, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -214,19 +231,43 @@ public class TSPGUI extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         statisticsJPanel.add(numberOfCitiesJTextField, gridBagConstraints);
 
+        nanosecondsJLabel.setText(" NanoSeconds:   ");
+        statisticsJPanel.add(nanosecondsJLabel, new java.awt.GridBagConstraints());
+
+        nanosecondsJTextField.setEditable(false);
+        nanosecondsJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
+        nanosecondsJTextField.setPreferredSize(new java.awt.Dimension(40, 22));
+        statisticsJPanel.add(nanosecondsJTextField, new java.awt.GridBagConstraints());
+
+        methodJTextField.setEditable(false);
+        methodJTextField.setPreferredSize(new java.awt.Dimension(130, 22));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
+        statisticsJPanel.add(methodJTextField, gridBagConstraints);
+
         actionJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Action"));
         actionJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
 
+        clearJButton.setMnemonic('C');
         clearJButton.setText("Clear");
+        clearJButton.setToolTipText("Clear the form.");
         actionJPanel.add(clearJButton);
 
-        printJButton.setText("Print");
-        actionJPanel.add(printJButton);
+        printFormJButton.setText("Print Form");
+        printFormJButton.setToolTipText("Print the form.");
+        actionJPanel.add(printFormJButton);
 
+        saveJButton.setMnemonic('S');
         saveJButton.setText("Save");
+        saveJButton.setToolTipText("Save the displayed data.");
         actionJPanel.add(saveJButton);
 
+        exitJButton.setMnemonic('x');
         exitJButton.setText("Exit");
+        exitJButton.setToolTipText("Exit the program.");
         actionJPanel.add(exitJButton);
 
         imageJPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -246,7 +287,9 @@ public class TSPGUI extends javax.swing.JFrame
 
         fileJMenu.setText("File");
 
+        openJMenuItem.setMnemonic('O');
         openJMenuItem.setText("Open");
+        openJMenuItem.setToolTipText("Open a file containing cities.");
         openJMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -257,16 +300,30 @@ public class TSPGUI extends javax.swing.JFrame
         fileJMenu.add(openJMenuItem);
 
         clearJMenuItem.setText("Clear");
+        clearJMenuItem.setToolTipText("Clear the form.");
         fileJMenu.add(clearJMenuItem);
 
         saveJMenuItem.setText("Save");
+        saveJMenuItem.setToolTipText("Save the displayed data.");
         fileJMenu.add(saveJMenuItem);
         fileJMenu.add(fileJSeparator);
 
-        printJMenuItem.setText("Print");
-        fileJMenu.add(printJMenuItem);
+        printJMenu.setText("Print");
+
+        printFormJMenuItem.setMnemonic('P');
+        printFormJMenuItem.setText("Print Form");
+        printFormJMenuItem.setToolTipText("Print the form.");
+        printJMenu.add(printFormJMenuItem);
+
+        printDataJMenuItem.setMnemonic('D');
+        printDataJMenuItem.setText("Print Data");
+        printDataJMenuItem.setToolTipText("Print the outputed data.");
+        printJMenu.add(printDataJMenuItem);
+
+        fileJMenu.add(printJMenu);
 
         exitJMenuItem.setText("Exit");
+        exitJMenuItem.setToolTipText("Exit the program.");
         fileJMenu.add(exitJMenuItem);
 
         TSPJMenuBar.add(fileJMenu);
@@ -274,22 +331,31 @@ public class TSPGUI extends javax.swing.JFrame
         methodJMenu.setText("Method");
 
         jMenuItem1.setText("Nearest Neighbor");
+        jMenuItem1.setToolTipText("A method to find the shortest path.");
         methodJMenu.add(jMenuItem1);
 
         jMenuItem2.setText("Sorted Edges");
+        jMenuItem2.setToolTipText("A method to find the shortest path.");
         methodJMenu.add(jMenuItem2);
 
         jMenuItem3.setText("Held Karp");
+        jMenuItem3.setToolTipText("A method to find the shortest path.");
         methodJMenu.add(jMenuItem3);
 
         TSPJMenuBar.add(methodJMenu);
 
-        editJMenu.setText("Edit");
-        TSPJMenuBar.add(editJMenu);
-
         helpJMenu.setText("Help");
+        helpJMenu.setToolTipText("");
 
         aboutJMenuItem.setText("About");
+        aboutJMenuItem.setToolTipText("Display the about form.");
+        aboutJMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                aboutJMenuItemActionPerformed(evt);
+            }
+        });
         helpJMenu.add(aboutJMenuItem);
 
         TSPJMenuBar.add(helpJMenu);
@@ -308,7 +374,7 @@ public class TSPGUI extends javax.swing.JFrame
                     .addComponent(actionJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                     .addComponent(outputJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -338,6 +404,13 @@ public class TSPGUI extends javax.swing.JFrame
         // Open the file slected by the user
         readFromFile();
     }//GEN-LAST:event_openJMenuItemActionPerformed
+
+    private void aboutJMenuItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_aboutJMenuItemActionPerformed
+    {//GEN-HEADEREND:event_aboutJMenuItemActionPerformed
+        // Open the about form
+        AboutJDialog myAbout = new AboutJDialog(this, rootPaneCheckingEnabled);
+        myAbout.setVisible(true);
+    }//GEN-LAST:event_aboutJMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,7 +478,6 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JTextField citiesVisitedJTextField;
     private javax.swing.JButton clearJButton;
     private javax.swing.JMenuItem clearJMenuItem;
-    private javax.swing.JMenu editJMenu;
     private javax.swing.JButton exitJButton;
     private javax.swing.JMenuItem exitJMenuItem;
     private javax.swing.JMenu fileJMenu;
@@ -419,6 +491,9 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu methodJMenu;
     private javax.swing.JPanel methodJPanel;
+    private javax.swing.JTextField methodJTextField;
+    private javax.swing.JLabel nanosecondsJLabel;
+    private javax.swing.JTextField nanosecondsJTextField;
     private javax.swing.JButton nearestNeighborJButton;
     private javax.swing.JLabel numberOfCitiesJLabel;
     private javax.swing.JTextField numberOfCitiesJTextField;
@@ -426,8 +501,10 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JPanel outputJPanel;
     private javax.swing.JScrollPane outputJScrollPane;
     private javax.swing.JTextArea outputJTextArea;
-    private javax.swing.JButton printJButton;
-    private javax.swing.JMenuItem printJMenuItem;
+    private javax.swing.JMenuItem printDataJMenuItem;
+    private javax.swing.JButton printFormJButton;
+    private javax.swing.JMenuItem printFormJMenuItem;
+    private javax.swing.JMenu printJMenu;
     private javax.swing.JButton saveJButton;
     private javax.swing.JMenuItem saveJMenuItem;
     private javax.swing.JButton sortedEdgesJButton;
