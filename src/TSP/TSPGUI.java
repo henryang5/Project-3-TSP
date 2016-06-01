@@ -41,7 +41,8 @@ public class TSPGUI extends javax.swing.JFrame
             verticies.clear();
             String fileName = "";
             JFileChooser myFileChooser = new JFileChooser("src/Data");
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt", "Data");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Text File", "txt", "Data");
             myFileChooser.setFileFilter(filter);
             int returnVal = myFileChooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -78,7 +79,8 @@ public class TSPGUI extends javax.swing.JFrame
             // exp.printStackTrace(); 
             // better: JFilecooser to select file 
             JFileChooser myFileChooser = new JFileChooser("src/Data");
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Text File", "txt", "Data");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Text File", "txt", "Data");
             myFileChooser.setFileFilter(filter);
             int returnVal = myFileChooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -456,37 +458,6 @@ public class TSPGUI extends javax.swing.JFrame
     public static void main (String args[])
     {
         /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try
-//        {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-//            {
-//                if ("Nimbus".equals(info.getName()))
-//                {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        }
-//        catch (ClassNotFoundException ex)
-//        {
-//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        catch (InstantiationException ex)
-//        {
-//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        catch (IllegalAccessException ex)
-//        {
-//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        catch (javax.swing.UnsupportedLookAndFeelException ex)
-//        {
-//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
         try
         {
             // Set System L&F
@@ -509,12 +480,7 @@ public class TSPGUI extends javax.swing.JFrame
         {
             // handle exception
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        // Create and display the form
         java.awt.EventQueue.invokeLater(()
                 -> 
                 {
@@ -522,7 +488,6 @@ public class TSPGUI extends javax.swing.JFrame
                     {
                         SplashJDialog yes = new SplashJDialog(null, true);
                         new TSPGUI().setVisible(true);
-
                     }
                     catch (Exception e)
                     {
