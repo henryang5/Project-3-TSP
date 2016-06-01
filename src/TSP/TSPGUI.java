@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TSPGUI extends javax.swing.JFrame
@@ -156,6 +158,8 @@ public class TSPGUI extends javax.swing.JFrame
         aboutJMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(224, 224, 224));
+        setResizable(false);
 
         outputJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Output"));
 
@@ -163,7 +167,7 @@ public class TSPGUI extends javax.swing.JFrame
         outputJTextArea.setColumns(20);
         outputJTextArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         outputJTextArea.setRows(5);
-        outputJTextArea.setText("  \n\n\n\n\n  Welcome to the Traveling Salesman\n \t       Program.");
+        outputJTextArea.setText("  \n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  Welcome to the Traveling Salesman\n \t       Program.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         outputJTextArea.setToolTipText("Shows the calculated data.");
         outputJScrollPane.setViewportView(outputJTextArea);
 
@@ -184,6 +188,7 @@ public class TSPGUI extends javax.swing.JFrame
                 .addContainerGap())
         );
 
+        methodJPanel.setBackground(new java.awt.Color(237, 237, 237));
         methodJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Method"));
         methodJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
 
@@ -202,6 +207,7 @@ public class TSPGUI extends javax.swing.JFrame
         heldKarpJButton.setToolTipText("A method to find the shortest path.");
         methodJPanel.add(heldKarpJButton);
 
+        statisticsJPanel.setBackground(new java.awt.Color(237, 237, 237));
         statisticsJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Statistics"));
         statisticsJPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -248,12 +254,20 @@ public class TSPGUI extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         statisticsJPanel.add(methodJTextField, gridBagConstraints);
 
+        actionJPanel.setBackground(new java.awt.Color(237, 237, 237));
         actionJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Action"));
         actionJPanel.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
 
         clearJButton.setMnemonic('C');
         clearJButton.setText("Clear");
         clearJButton.setToolTipText("Clear the form.");
+        clearJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                clearJButtonActionPerformed(evt);
+            }
+        });
         actionJPanel.add(clearJButton);
 
         printFormJButton.setText("Print Form");
@@ -268,10 +282,18 @@ public class TSPGUI extends javax.swing.JFrame
         exitJButton.setMnemonic('x');
         exitJButton.setText("Exit");
         exitJButton.setToolTipText("Exit the program.");
+        exitJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                exitJButtonActionPerformed(evt);
+            }
+        });
         actionJPanel.add(exitJButton);
 
         imageJPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        imageJLabel.setBackground(new java.awt.Color(224, 224, 224));
         imageJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Data/TSPGUI.png"))); // NOI18N
 
         javax.swing.GroupLayout imageJPanelLayout = new javax.swing.GroupLayout(imageJPanel);
@@ -412,42 +434,80 @@ public class TSPGUI extends javax.swing.JFrame
         myAbout.setVisible(true);
     }//GEN-LAST:event_aboutJMenuItemActionPerformed
 
+    private void exitJButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_exitJButtonActionPerformed
+    {//GEN-HEADEREND:event_exitJButtonActionPerformed
+        // Exit the program
+        System.exit(0);
+    }//GEN-LAST:event_exitJButtonActionPerformed
+
+    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearJButtonActionPerformed
+    {//GEN-HEADEREND:event_clearJButtonActionPerformed
+        // Clear the form
+        outputJTextArea.setText("");
+        numberOfCitiesJTextField.setText("");
+        nanosecondsJTextField.setText("");
+        citiesVisitedJTextField.setText("");
+        methodJTextField.setText("");
+    }//GEN-LAST:event_clearJButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main (String args[])
     {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try
+//        {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+//            {
+//                if ("Nimbus".equals(info.getName()))
+//                {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        }
+//        catch (ClassNotFoundException ex)
+//        {
+//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (InstantiationException ex)
+//        {
+//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (IllegalAccessException ex)
+//        {
+//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (javax.swing.UnsupportedLookAndFeelException ex)
+//        {
+//            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
         try
         {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
+            // Set System L&F
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
         }
-        catch (ClassNotFoundException ex)
+        catch (UnsupportedLookAndFeelException e)
         {
-            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // handle exception
         }
-        catch (InstantiationException ex)
+        catch (ClassNotFoundException e)
         {
-            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // handle exception
         }
-        catch (IllegalAccessException ex)
+        catch (InstantiationException e)
         {
-            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // handle exception
         }
-        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        catch (IllegalAccessException e)
         {
-            java.util.logging.Logger.getLogger(TSPGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // handle exception
         }
         //</editor-fold>
         //</editor-fold>

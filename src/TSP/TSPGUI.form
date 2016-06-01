@@ -109,6 +109,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="e0" green="e0" red="e0" type="rgb"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="TSPJMenuBar"/>
@@ -219,7 +223,7 @@
                   <Font name="Courier New" size="11" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="  &#xa;&#xa;&#xa;&#xa;&#xa;  Welcome to the Traveling Salesman&#xa; &#x9;       Program."/>
+                <Property name="text" type="java.lang.String" value="  &#xa;&#xa;&#xa;&#xa;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&#xa;  Welcome to the Traveling Salesman&#xa; &#x9;       Program.&#xa;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"/>
                 <Property name="toolTipText" type="java.lang.String" value="Shows the calculated data."/>
               </Properties>
             </Component>
@@ -229,6 +233,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="methodJPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ed" green="ed" red="ed" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Method">
@@ -272,6 +279,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="statisticsJPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ed" green="ed" red="ed" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Statistics">
@@ -381,6 +391,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="actionJPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ed" green="ed" red="ed" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Action">
@@ -405,6 +418,9 @@
             <Property name="text" type="java.lang.String" value="Clear"/>
             <Property name="toolTipText" type="java.lang.String" value="Clear the form."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearJButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="printFormJButton">
           <Properties>
@@ -425,6 +441,9 @@
             <Property name="text" type="java.lang.String" value="Exit"/>
             <Property name="toolTipText" type="java.lang.String" value="Exit the program."/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitJButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -452,6 +471,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imageJLabel">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e0" green="e0" red="e0" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Data/TSPGUI.png"/>
             </Property>
