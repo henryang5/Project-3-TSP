@@ -5,8 +5,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
@@ -16,9 +19,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class TSPGUI extends javax.swing.JFrame
 {
 
-    private ArrayList<Cities> verticies = new ArrayList<Cities>();
-    private String[] vertex;
-    private int[][] edges;
+   public ArrayList<Point> pts = new ArrayList<>();
+   public ArrayList<Integer> vertices = new ArrayList<>();
+   public int[][] edges;
+   public List<WeightedEdge> list = new ArrayList<>();
+   private String[] vertex; 
 
     public TSPGUI ()
     {
@@ -31,83 +36,86 @@ public class TSPGUI extends javax.swing.JFrame
                 .getImage("src/Data/TSPIcon.png"));
         // Center form
         this.setLocationRelativeTo(null);
+        readFromFile(); 
     }
 
     //Java docs for Readfrom File
     public void readFromFile ()
     {
-        try
-        {
-            verticies.clear();
-            String fileName = "";
-            JFileChooser myFileChooser = new JFileChooser("src/Data");
-            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                    "Text File", "txt", "Data");
-            myFileChooser.setFileFilter(filter);
-            int returnVal = myFileChooser.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION)
+        try 
+        {  
+            File file = new File("");
+            final JFileChooser chooser = new JFileChooser("src/Data");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(this);
+            
+            if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-                File theFile = myFileChooser.getSelectedFile();
-                fileName = theFile.getPath();
-            }
-            FileReader inputFile = new FileReader(fileName);
-            BufferedReader input = new BufferedReader(inputFile);
-            String line = input.readLine();     // Read first line of file 
-            while (line != null)
-            {
-                Cities newVertex = new Cities();
-                // Use the stringtokenizer class to seperate fields in the line 
-                StringTokenizer token = new StringTokenizer(line, " ");
-                while (token.hasMoreTokens())
+                file = new File(chooser.getSelectedFile().toString());
+                BufferedReader input = new BufferedReader(new FileReader(file));
+                String line = input.readLine();
+
+                while (line != null) 
                 {
-                    newVertex.setVertex(token.nextToken());
-                    newVertex.setX(Integer.parseInt(token.nextToken()));
-                    newVertex.setY(Integer.parseInt(token.nextToken()));
+                    StringTokenizer stringTokenizer = new StringTokenizer(line, " ");
+                    while (stringTokenizer.hasMoreElements()) 
+                    {
+                        vertices.add(Integer.parseInt(stringTokenizer.nextToken().trim()));
+                        pts.add(new Point(Integer.parseInt(stringTokenizer.nextToken()),
+                        Integer.parseInt(stringTokenizer.nextToken())));
+                    }
+                    line = input.readLine();
                 }
-                // add the verticies to the arraylist 
-                // Read the next line
-                verticies.add(newVertex);
-                line = input.readLine();
+                createEdges(vertices, pts); 
+                WeightedGraph<Integer> graph = new WeightedGraph<Integer>(list, vertices.size());
+                graph.printWeightedEdges();
+                WeightedGraph<Integer>.MST tree = graph.getMinimumSpanningTree(0);
+                tree.printTree();
+                input.close();
             }
-            vertex = new String[verticies.size()];
-            edges = new int[verticies.size()][2];
-            createArray();
-            input.close();
         }
-        catch (FileNotFoundException exp)
+        catch(FileNotFoundException exp)
         {
             // exp.printStackTrace(); 
             // better: JFilecooser to select file 
             JFileChooser myFileChooser = new JFileChooser("src/Data");
-            FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                    "Text File", "txt", "Data");
+            FileNameExtensionFilter filter = new 
+                        FileNameExtensionFilter("Text File", "txt", "Data"); 
             myFileChooser.setFileFilter(filter);
-            int returnVal = myFileChooser.showOpenDialog(null);
-            if (returnVal == JFileChooser.APPROVE_OPTION)
+            int returnVal = myFileChooser.showOpenDialog(null); 
+            if(returnVal == JFileChooser.APPROVE_OPTION)
             {
-                File theFile = myFileChooser.getSelectedFile();
-                String fileName = theFile.getPath();
+                File theFile = myFileChooser.getSelectedFile(); 
+                String fileName = theFile.getPath(); 
             }
-            else
-            {
+            else 
                 System.out.println("Open command cancelled by the user");
-            }
         }
-        catch (IOException exp)
+        catch(IOException exp)
         {
-            exp.printStackTrace();
+            exp.printStackTrace();        
         }
     }
 
-    public void createArray ()
+    public void createEdges(ArrayList<Integer> v, ArrayList<Point> p)
     {
-        for (int i = 0; i < verticies.size(); i++)
+        edges = new int[p.size()][3];
+        for (int i = 0; i < p.size(); i++)
         {
-            vertex[i] = verticies.get(i).getVertex();
-            edges[i][0] = verticies.get(i).getX();
-            edges[i][1] = verticies.get(i).getY();
+            for (int j = i + 1; j < p.size(); j++ )
+            {
+                edges[i][0]=i;
+                edges[i][1]=j;
+                edges[i][2]=(int)Point.getDistance(p.get(i), p.get(j)); 
+                list.add(new WeightedEdge(edges[i][0],edges[i][1],edges[i][2]));
+                list.add(new WeightedEdge(edges[i][1],edges[i][0],edges[i][2]));
+                System.out.print(edges[i][0]+ " , "+edges[i][1] + ": ");
+                System.out.println(edges[i][2]);
+            }
         }
-    }
+    } 
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,8 +124,7 @@ public class TSPGUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         outputJPanel = new javax.swing.JPanel();
@@ -263,10 +270,8 @@ public class TSPGUI extends javax.swing.JFrame
         clearJButton.setMnemonic('C');
         clearJButton.setText("Clear");
         clearJButton.setToolTipText("Clear the form.");
-        clearJButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        clearJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearJButtonActionPerformed(evt);
             }
         });
@@ -284,10 +289,8 @@ public class TSPGUI extends javax.swing.JFrame
         exitJButton.setMnemonic('x');
         exitJButton.setText("Exit");
         exitJButton.setToolTipText("Exit the program.");
-        exitJButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        exitJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitJButtonActionPerformed(evt);
             }
         });
@@ -314,10 +317,8 @@ public class TSPGUI extends javax.swing.JFrame
         openJMenuItem.setMnemonic('O');
         openJMenuItem.setText("Open");
         openJMenuItem.setToolTipText("Open a file containing cities.");
-        openJMenuItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        openJMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openJMenuItemActionPerformed(evt);
             }
         });
@@ -329,6 +330,11 @@ public class TSPGUI extends javax.swing.JFrame
 
         saveJMenuItem.setText("Save");
         saveJMenuItem.setToolTipText("Save the displayed data.");
+        saveJMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveJMenuItemActionPerformed(evt);
+            }
+        });
         fileJMenu.add(saveJMenuItem);
         fileJMenu.add(fileJSeparator);
 
@@ -337,6 +343,11 @@ public class TSPGUI extends javax.swing.JFrame
         printFormJMenuItem.setMnemonic('P');
         printFormJMenuItem.setText("Print Form");
         printFormJMenuItem.setToolTipText("Print the form.");
+        printFormJMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printFormJMenuItemActionPerformed(evt);
+            }
+        });
         printJMenu.add(printFormJMenuItem);
 
         printDataJMenuItem.setMnemonic('D');
@@ -373,10 +384,8 @@ public class TSPGUI extends javax.swing.JFrame
 
         aboutJMenuItem.setText("About");
         aboutJMenuItem.setToolTipText("Display the about form.");
-        aboutJMenuItem.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        aboutJMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutJMenuItemActionPerformed(evt);
             }
         });
@@ -451,6 +460,30 @@ public class TSPGUI extends javax.swing.JFrame
         citiesVisitedJTextField.setText("");
         methodJTextField.setText("");
     }//GEN-LAST:event_clearJButtonActionPerformed
+
+    private void saveJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJMenuItemActionPerformed
+          // Save the Statistics of the program.
+        // Save the context of the JTextArea to an external text file
+        // Create a file to write onto
+        try
+        {
+            FileWriter fwriter = new FileWriter("src/Data/results.txt", true);
+            PrintWriter outputFile = new PrintWriter(fwriter);
+            outputFile.println(outputJTextArea.getText());
+            outputFile.close();
+        }
+        catch(IOException exp)
+        {
+            exp.printStackTrace();
+
+        }
+    }//GEN-LAST:event_saveJMenuItemActionPerformed
+
+    private void printFormJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printFormJMenuItemActionPerformed
+         // call print printComponent method of the printUtiliites
+        // 7/99 Marty Hall, http://www.apl.jhu.edu/~hall/java/
+        PrintUtilities.printComponent(this);
+    }//GEN-LAST:event_printFormJMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
