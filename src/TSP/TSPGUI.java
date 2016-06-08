@@ -150,9 +150,8 @@ public class TSPGUI extends javax.swing.JFrame
     {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        outputJPanel = new javax.swing.JPanel();
-        outputJScrollPane = new javax.swing.JScrollPane();
-        outputJTextArea = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         methodJPanel = new javax.swing.JPanel();
         nearestNeighborJButton = new javax.swing.JButton();
         sortedEdgesJButton = new javax.swing.JButton();
@@ -172,6 +171,11 @@ public class TSPGUI extends javax.swing.JFrame
         exitJButton = new javax.swing.JButton();
         imageJPanel = new javax.swing.JPanel();
         imageJLabel = new javax.swing.JLabel();
+        dataJTabbedPane = new javax.swing.JTabbedPane();
+        inputJScrollPane = new javax.swing.JScrollPane();
+        inputJTextArea = new javax.swing.JTextArea();
+        outputJScrollPane = new javax.swing.JScrollPane();
+        outputJTextArea = new javax.swing.JTextArea();
         TSPJMenuBar = new javax.swing.JMenuBar();
         fileJMenu = new javax.swing.JMenu();
         openJMenuItem = new javax.swing.JMenuItem();
@@ -189,36 +193,24 @@ public class TSPGUI extends javax.swing.JFrame
         helpJMenu = new javax.swing.JMenu();
         aboutJMenuItem = new javax.swing.JMenuItem();
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String []
+            {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(224, 224, 224));
         setResizable(false);
-
-        outputJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Output"));
-
-        outputJTextArea.setEditable(false);
-        outputJTextArea.setColumns(20);
-        outputJTextArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
-        outputJTextArea.setRows(5);
-        outputJTextArea.setText("  \n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  Welcome to the Traveling Salesman\n \t       Program.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        outputJTextArea.setToolTipText("Shows the calculated data.");
-        outputJScrollPane.setViewportView(outputJTextArea);
-
-        javax.swing.GroupLayout outputJPanelLayout = new javax.swing.GroupLayout(outputJPanel);
-        outputJPanel.setLayout(outputJPanelLayout);
-        outputJPanelLayout.setHorizontalGroup(
-            outputJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, outputJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(outputJScrollPane)
-                .addContainerGap())
-        );
-        outputJPanelLayout.setVerticalGroup(
-            outputJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, outputJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(outputJScrollPane)
-                .addContainerGap())
-        );
 
         methodJPanel.setBackground(new java.awt.Color(237, 237, 237));
         methodJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Method"));
@@ -339,6 +331,27 @@ public class TSPGUI extends javax.swing.JFrame
             .addComponent(imageJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        dataJTabbedPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        inputJTextArea.setEditable(false);
+        inputJTextArea.setColumns(20);
+        inputJTextArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        inputJTextArea.setRows(5);
+        inputJTextArea.setText("  \n\n\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  Welcome to the Traveling Salesman\n \t       Program.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        inputJTextArea.setToolTipText("Shows the calculated data.");
+        inputJScrollPane.setViewportView(inputJTextArea);
+
+        dataJTabbedPane.addTab("Input", inputJScrollPane);
+
+        outputJTextArea.setEditable(false);
+        outputJTextArea.setColumns(20);
+        outputJTextArea.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        outputJTextArea.setRows(5);
+        outputJTextArea.setToolTipText("Shows the calculated data.");
+        outputJScrollPane.setViewportView(outputJTextArea);
+
+        dataJTabbedPane.addTab("Output", outputJScrollPane);
+
         fileJMenu.setText("File");
 
         openJMenuItem.setMnemonic('O');
@@ -442,8 +455,8 @@ public class TSPGUI extends javax.swing.JFrame
                     .addComponent(actionJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                    .addComponent(outputJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(dataJTabbedPane)
+                    .addComponent(statisticsJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -454,7 +467,7 @@ public class TSPGUI extends javax.swing.JFrame
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(statisticsJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(outputJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(dataJTabbedPane))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(imageJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -489,7 +502,7 @@ public class TSPGUI extends javax.swing.JFrame
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearJButtonActionPerformed
     {//GEN-HEADEREND:event_clearJButtonActionPerformed
         // Clear the form
-        outputJTextArea.setText("");
+        inputJTextArea.setText("");
         numberOfCitiesJTextField.setText("");
         nanosecondsJTextField.setText("");
         totalMilesJTextField.setText("");
@@ -504,7 +517,7 @@ public class TSPGUI extends javax.swing.JFrame
         {
             FileWriter fwriter = new FileWriter("src/Data/results.txt", true);
             PrintWriter outputFile = new PrintWriter(fwriter);
-            outputFile.println(outputJTextArea.getText());
+            outputFile.println(inputJTextArea.getText());
             outputFile.close();
         }
         catch(IOException exp)
@@ -571,6 +584,7 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JPanel actionJPanel;
     private javax.swing.JButton clearJButton;
     private javax.swing.JMenuItem clearJMenuItem;
+    private javax.swing.JTabbedPane dataJTabbedPane;
     private javax.swing.JButton exitJButton;
     private javax.swing.JMenuItem exitJMenuItem;
     private javax.swing.JMenu fileJMenu;
@@ -579,9 +593,13 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JMenu helpJMenu;
     private javax.swing.JLabel imageJLabel;
     private javax.swing.JPanel imageJPanel;
+    private javax.swing.JScrollPane inputJScrollPane;
+    private javax.swing.JTextArea inputJTextArea;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JMenu methodJMenu;
     private javax.swing.JPanel methodJPanel;
     private javax.swing.JTextField methodJTextField;
@@ -591,7 +609,6 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JLabel numberOfCitiesJLabel;
     private javax.swing.JTextField numberOfCitiesJTextField;
     private javax.swing.JMenuItem openJMenuItem;
-    private javax.swing.JPanel outputJPanel;
     private javax.swing.JScrollPane outputJScrollPane;
     private javax.swing.JTextArea outputJTextArea;
     private javax.swing.JMenuItem printDataJMenuItem;
