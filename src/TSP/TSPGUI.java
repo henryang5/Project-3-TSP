@@ -1,30 +1,43 @@
 package TSP;
 
 import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import javax.swing.JFileChooser;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * ----------------------------------------------------------------------------
+ * TSPGUI.java A class representing the GUI used to calculate the shortest Total
+ * Distance based on the supplied Cities.
+ * <pre>
+ *    Project:  ConvexGUI
+ *    Platform: jdk 1.8.0_14; NetBeans IDE 8.0; Windows 8
+ *    Course:   Java 143
+ *    Hours:    16 hours and 45 minutes
+ *    Created on:    May 30, 2016, 1:45:39 PM
+ *    Revised on:    June 9, 2016
+ *
+ * @see java.awt.Toolkit;
+ * @see java.io.*;
+ * @see java.util.*;
+ * @see javax.swing.*;
+ * @see javax.swing.filechooser.FileNameExtensionFilter;
+ * </pre>
+ * ----------------------------------------------------------------------------
+ */
 public class TSPGUI extends javax.swing.JFrame
 {
 
-   public ArrayList<Point> pts = new ArrayList<>();
-   public ArrayList<Integer> vertices = new ArrayList<>();
-   public int[][] edges;
-   public List<WeightedEdge> list = new ArrayList<>();
-   private String[] vertex; 
+    public ArrayList<Point> pts = new ArrayList<>();
+    public ArrayList<Integer> vertices = new ArrayList<>();
+    public int[][] edges;
+    public List<WeightedEdge> list = new ArrayList<>();
+    private String[] vertex; 
 
+    /**
+     *
+     */
     public TSPGUI ()
     {
         initComponents();
@@ -40,6 +53,10 @@ public class TSPGUI extends javax.swing.JFrame
     }
 
     //Java docs for Readfrom File
+
+    /**
+     *
+     */
     public void readFromFile ()
     {
         try 
@@ -98,6 +115,11 @@ public class TSPGUI extends javax.swing.JFrame
         }
     }
 
+    /**
+     *
+     * @param v
+     * @param p
+     */
     public void createEdges(ArrayList<Integer> v, ArrayList<Point> p)
     {
         edges = new int[p.size()][3];
@@ -124,7 +146,8 @@ public class TSPGUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         outputJPanel = new javax.swing.JPanel();
@@ -136,8 +159,8 @@ public class TSPGUI extends javax.swing.JFrame
         heldKarpJButton = new javax.swing.JButton();
         statisticsJPanel = new javax.swing.JPanel();
         numberOfCitiesJLabel = new javax.swing.JLabel();
-        citiesVisitedJTextField = new javax.swing.JTextField();
-        citiesVisitedJLabel = new javax.swing.JLabel();
+        totalMilesJTextField = new javax.swing.JTextField();
+        totalMilesJLabel = new javax.swing.JLabel();
         numberOfCitiesJTextField = new javax.swing.JTextField();
         nanosecondsJLabel = new javax.swing.JLabel();
         nanosecondsJTextField = new javax.swing.JTextField();
@@ -224,19 +247,19 @@ public class TSPGUI extends javax.swing.JFrame
         numberOfCitiesJLabel.setToolTipText("");
         statisticsJPanel.add(numberOfCitiesJLabel, new java.awt.GridBagConstraints());
 
-        citiesVisitedJTextField.setEditable(false);
-        citiesVisitedJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
-        citiesVisitedJTextField.setPreferredSize(new java.awt.Dimension(30, 22));
+        totalMilesJTextField.setEditable(false);
+        totalMilesJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
+        totalMilesJTextField.setPreferredSize(new java.awt.Dimension(30, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        statisticsJPanel.add(citiesVisitedJTextField, gridBagConstraints);
+        statisticsJPanel.add(totalMilesJTextField, gridBagConstraints);
 
-        citiesVisitedJLabel.setText("Cities Visited:   ");
+        totalMilesJLabel.setText("Total Miles: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        statisticsJPanel.add(citiesVisitedJLabel, gridBagConstraints);
+        statisticsJPanel.add(totalMilesJLabel, gridBagConstraints);
 
         numberOfCitiesJTextField.setEditable(false);
         numberOfCitiesJTextField.setMinimumSize(new java.awt.Dimension(30, 22));
@@ -270,8 +293,10 @@ public class TSPGUI extends javax.swing.JFrame
         clearJButton.setMnemonic('C');
         clearJButton.setText("Clear");
         clearJButton.setToolTipText("Clear the form.");
-        clearJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        clearJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 clearJButtonActionPerformed(evt);
             }
         });
@@ -289,8 +314,10 @@ public class TSPGUI extends javax.swing.JFrame
         exitJButton.setMnemonic('x');
         exitJButton.setText("Exit");
         exitJButton.setToolTipText("Exit the program.");
-        exitJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exitJButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 exitJButtonActionPerformed(evt);
             }
         });
@@ -317,8 +344,10 @@ public class TSPGUI extends javax.swing.JFrame
         openJMenuItem.setMnemonic('O');
         openJMenuItem.setText("Open");
         openJMenuItem.setToolTipText("Open a file containing cities.");
-        openJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        openJMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 openJMenuItemActionPerformed(evt);
             }
         });
@@ -330,8 +359,10 @@ public class TSPGUI extends javax.swing.JFrame
 
         saveJMenuItem.setText("Save");
         saveJMenuItem.setToolTipText("Save the displayed data.");
-        saveJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveJMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 saveJMenuItemActionPerformed(evt);
             }
         });
@@ -343,8 +374,10 @@ public class TSPGUI extends javax.swing.JFrame
         printFormJMenuItem.setMnemonic('P');
         printFormJMenuItem.setText("Print Form");
         printFormJMenuItem.setToolTipText("Print the form.");
-        printFormJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        printFormJMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 printFormJMenuItemActionPerformed(evt);
             }
         });
@@ -384,8 +417,10 @@ public class TSPGUI extends javax.swing.JFrame
 
         aboutJMenuItem.setText("About");
         aboutJMenuItem.setToolTipText("Display the about form.");
-        aboutJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        aboutJMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 aboutJMenuItemActionPerformed(evt);
             }
         });
@@ -457,7 +492,7 @@ public class TSPGUI extends javax.swing.JFrame
         outputJTextArea.setText("");
         numberOfCitiesJTextField.setText("");
         nanosecondsJTextField.setText("");
-        citiesVisitedJTextField.setText("");
+        totalMilesJTextField.setText("");
         methodJTextField.setText("");
     }//GEN-LAST:event_clearJButtonActionPerformed
 
@@ -486,6 +521,8 @@ public class TSPGUI extends javax.swing.JFrame
     }//GEN-LAST:event_printFormJMenuItemActionPerformed
 
     /**
+     * The main method for the Traveling Salesperson Problem.
+     * 
      * @param args the command line arguments
      */
     public static void main (String args[])
@@ -532,8 +569,6 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JMenuBar TSPJMenuBar;
     private javax.swing.JMenuItem aboutJMenuItem;
     private javax.swing.JPanel actionJPanel;
-    private javax.swing.JLabel citiesVisitedJLabel;
-    private javax.swing.JTextField citiesVisitedJTextField;
     private javax.swing.JButton clearJButton;
     private javax.swing.JMenuItem clearJMenuItem;
     private javax.swing.JButton exitJButton;
@@ -567,5 +602,7 @@ public class TSPGUI extends javax.swing.JFrame
     private javax.swing.JMenuItem saveJMenuItem;
     private javax.swing.JButton sortedEdgesJButton;
     private javax.swing.JPanel statisticsJPanel;
+    private javax.swing.JLabel totalMilesJLabel;
+    private javax.swing.JTextField totalMilesJTextField;
     // End of variables declaration//GEN-END:variables
 }

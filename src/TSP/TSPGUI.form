@@ -312,7 +312,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="citiesVisitedJTextField">
+        <Component class="javax.swing.JTextField" name="totalMilesJTextField">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -328,9 +328,9 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="citiesVisitedJLabel">
+        <Component class="javax.swing.JLabel" name="totalMilesJLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cities Visited:   "/>
+            <Property name="text" type="java.lang.String" value="Total Miles: "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
