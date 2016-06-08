@@ -107,7 +107,7 @@ public class TSPGUI extends javax.swing.JFrame
                 String fileName = theFile.getPath(); 
             }
             else 
-                System.out.println("Open command cancelled by the user");
+                System.out.println("File not found");
         }
         catch(IOException exp)
         {
@@ -122,6 +122,7 @@ public class TSPGUI extends javax.swing.JFrame
      */
     public void createEdges(ArrayList<Integer> v, ArrayList<Point> p)
     {
+        inputJTextArea.setText("");
         edges = new int[p.size()][3];
         for (int i = 0; i < p.size(); i++)
         {
@@ -132,8 +133,8 @@ public class TSPGUI extends javax.swing.JFrame
                 edges[i][2]=(int)Point.getDistance(p.get(i), p.get(j)); 
                 list.add(new WeightedEdge(edges[i][0],edges[i][1],edges[i][2]));
                 list.add(new WeightedEdge(edges[i][1],edges[i][0],edges[i][2]));
-                System.out.print(edges[i][0]+ " , "+edges[i][1] + ": ");
-                System.out.println(edges[i][2]);
+                inputJTextArea.append(edges[i][0]+ " , "+edges[i][1] + ": ");
+                inputJTextArea.append(String.valueOf(edges[i][2]) + "\n");
             }
         }
     } 
